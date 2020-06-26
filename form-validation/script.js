@@ -18,12 +18,6 @@ function showSuccess(input) {
     formControl.className = 'form-control success';
 }
 
-// Check email is valid
-// function isValidEmail(email) {
-//     const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-//     return re.test(String(email).toLowerCase());
-// }
-
 function checkEmail(input) {
     const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     if (re.test(input.value.trim())) {
@@ -37,7 +31,6 @@ function checkEmail(input) {
 function checkRequired(inputArr) {
     inputArr.forEach(function(input) {
         if (input.value.trim() === '') {
-            // showError(input, `${input.id} is Required`);
             showError(input, `${getFieldName(input)} is Required`);
         } else {
             showSuccess(input);
@@ -77,37 +70,3 @@ form.addEventListener('submit', function(e) {
     checkEmail(email);
     checkPasswordMatch(password, password2);
 });
-
-// Individual input field
-/* form.addEventListener('submit', function(e) {
-    e.preventDefault();
- 
-    if (username.value === '') {
-        showError(username, 'Username is required');
-    } else {
-        showSuccess(username);
-    }
-
-    if (email.value === '') {
-        showError(email, 'email is required');
-    } else if(!isValidEmail(email.value)) {
-        showError(email, 'Valid email-id is required');
-    } else {
-        showSuccess(email);
-    }
-
-    if (password.value === ''){
-        showError(password, 'Password is required');
-    } else if (password.value.length <= 3){
-        showError(password, 'Password length must be greater than 3');
-    }
-    else {
-        showSuccess(password);
-    }
-
-    if (password2.value === ''){
-        showError(password2, 'Confirm Password is required');
-    } else {
-        showSuccess(password2);
-    }
-}); */
